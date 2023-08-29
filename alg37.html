@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Feira de Livros</title>
+<style>
+ body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(to bottom, #663399, #000000);
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+ }
+ .container {
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 300px;
+  text-align: center;
+ }
+ h1 {
+  margin-bottom: 20px;
+  color: #663399;
+ }
+ label {
+  display: block;
+  margin-bottom: 5px;
+  color: #333333;
+ }
+ input {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  border: 1px solid #cccccc;
+  border-radius: 3px;
+ }
+ button {
+  background-color: #663399;
+  color: rgb(0, 0, 0);
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+ width: 100%;
+ }
+ button:hover {
+  background-color: #512b6b;
+  color: #971297;
+ }
+ #resultado {
+  margin-top: 20px;
+  display: none; }
+ 
+ #resultado p {
+  color: #333333;
+  margin-bottom: 10px;
+ }
+ span.valor {
+  font-weight: bold;
+  color: #663399;
+ }
+ img:hover{
+    width: 700px;
+    position: relative;
+    left: -200px;
+ }
+</style>
+</head>
+<body>
+<div class="container">
+ <h1>Feira de Livros</h1>
+ <form id="livros-form">
+  <label for="valor1">Valor do primeiro livro:</label>
+  <input type="number" id="valor1" step="0.01" required>
+  <label for="valor2">Valor do segundo livro:</label>
+  <input type="number" id="valor2" step="0.01" required>
+  <label for="valor3">Valor do terceiro livro:</label>
+  <input type="number" id="valor3" step="0.01" required>
+  <button type="submit">Calcular</button>
+  <img src="Capturar.PNG" width="300px"><br>
+  <img src="print2.png" width="300px">
+  <p style="color: #000000; font-size: 13px;">SCRIPT VS CODE</p>
+  <p style="color: #000000; font-size: 13px; text-align: start;">
+    const form = document.getElementById('livros-form');
+    const totalSemDescontoSpan = document.getElementById('total-sem-desconto');
+    const totalComDescontoSpan = document.getElementById('total-com-desconto');
+    const resultadoDiv = document.getElementById('resultado');
+   
+    form.addEventListener('submit', function(event) {
+     event.preventDefault();
+   
+     const valor1 = parseFloat(document.getElementById('valor1').value);
+     const valor2 = parseFloat(document.getElementById('valor2').value);
+     const valor3 = parseFloat(document.getElementById('valor3').value);
+   
+     const totalSemDesconto = valor1 + valor2 + valor3;
+     const totalComDesconto = totalSemDesconto - (totalSemDesconto * 0.15);
+     
+     totalSemDescontoSpan.textContent = totalSemDesconto.toFixed(2);
+     totalComDescontoSpan.textContent = totalComDesconto.toFixed(2);
+   
+    resultadoDiv.style.display = 'block';
+    }
+    )
+  </p>
+ </form>
+ <div id="resultado">
+  <p>Total sem desconto: R$ <span class="valor" id="total-sem-desconto"></span></p>
+  <p>Total com desconto de 20%: R$ <span class="valor" id="total-com-desconto"></span></p>
+
+  
+</div>
+
+<script>
+ const form = document.getElementById('livros-form');
+ const totalSemDescontoSpan = document.getElementById('total-sem-desconto');
+ const totalComDescontoSpan = document.getElementById('total-com-desconto');
+ const resultadoDiv = document.getElementById('resultado');
+
+ form.addEventListener('submit', function(event) {
+  event.preventDefault();
+
+  const valor1 = parseFloat(document.getElementById('valor1').value);
+  const valor2 = parseFloat(document.getElementById('valor2').value);
+  const valor3 = parseFloat(document.getElementById('valor3').value);
+
+  const totalSemDesconto = valor1 + valor2 + valor3;
+  const totalComDesconto = totalSemDesconto - (totalSemDesconto * 0.15);
+  
+  totalSemDescontoSpan.textContent = totalSemDesconto.toFixed(2);
+  totalComDescontoSpan.textContent = totalComDesconto.toFixed(2);
+
+ resultadoDiv.style.display = 'block';
+ }
+ )
+
+</script>
+</body>
+</html>
